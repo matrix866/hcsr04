@@ -1,10 +1,10 @@
 ################################################################################
 # Example Ultrasonic sensor HC-SR04
 #
-# Created: 2016-02-06 15:24:45.274632
-# The value 0 means the object is too close (<2cm)
-# The value 1 means the object is too far (>400cm)
-#    
+# Created: 2016-03-20 20:46:00
+# The value 1 means out of range
+# Range is between 2cm and 400cm
+# The distance is always an int value
 ################################################################################
 
 from community.matrix866.hcsr04 import hcsr04
@@ -14,13 +14,30 @@ streams.serial()
 
 
 try:
-    sleep(2000)
+    
+    sleep(3000)
+    print("inizio")
     while True:
-#         D1 = trigger port
-#         D2.ICU = echo port
-            x = hcsr04.getDistance(D1,D2.ICU)
+        a = HCSR04(D1,D2.ICU) # Create object
+        a.distance            #Initialized with a None value
+        
+        a.readDistance()     #Value is now stored
+        a.distance()         # Return the the value
+        a.distance           # You can directly access teh value
 
-            print("Distance:",x)
-            sleep(1000)
+        print( a.distance() )
+        print( a.distance )
+        
+        
+        print("Calculating distance again, wait...")
+        
+        #This equals to a.readDistance() + a.distance()
+        #If you do this the old a object is overwritten with the new object a with a new distance value
+        a.getDistance()      
+        
+        print( a.getDistance() )
+        
+
+        
 except Exception as e1:
     print(e1)

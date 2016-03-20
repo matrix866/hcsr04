@@ -1,1 +1,1 @@
-{"dependencies": {"core.zerynth.stdlib": "r1.0.0"}, "whatsnew": "First version for Zerynth", "examples": ["Example_Ultrasonic_sensor_HC-SR04"], "name": "Ultrasonic Sensor HC-SR04"}
+{"dependencies": {"core.zerynth.stdlib": "r1.0.0"}, "examples": ["Example_Ultrasonic_sensor_HC-SR04"], "name": "Ultrasonic Sensor HC-SR04", "whatsnew": "-Fixed bug when out of range.\n-Totally different implementation, now class based"}
