@@ -8,7 +8,7 @@
 import icu
 
 
-class HCSR04:#example: objectDistance = HCSR04(D1,D2.ICU)
+class HCSR04:
 
     def __init__(self,triggerPort,echoPort):
         self.distance = None
@@ -17,7 +17,7 @@ class HCSR04:#example: objectDistance = HCSR04(D1,D2.ICU)
         pinMode(self.triggerPort,OUTPUT)
         pinMode(self.echoPort,INPUT)
 
-    def readDistance(self): 
+    def ReadDistance(self): 
         """This method calculate the distance and save it as class attribute, does not return anything"""
         raw_distance = 0
         sleep(60)#SR04 datasheet advice 60ms between two measurements
@@ -40,11 +40,11 @@ class HCSR04:#example: objectDistance = HCSR04(D1,D2.ICU)
 
         self.distance = int(raw_distance)
 
-    def distance(self):
+    def Distance(self):
         """Returns the distance previously calculated with readDistance() method or with getDistance() method."""
         return self.distance
 
-    def getDistance(self):
+    def GetDistance(self):
         """Calculate the distance with readDistance() then return it"""
-        self.readDistance()
+        self.ReadDistance()
         return self.distance

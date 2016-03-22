@@ -14,30 +14,27 @@ streams.serial()
 
 
 try:
+    sleep(5000)
+    print("starting")
+    #A = hcsr04.HCSR04(TRIGGERPORT,ECHOPORT.ICU)
+    A = hcsr04.HCSR04(D0,D1.ICU)
+    #With A.Distance() you get the distance value
+    #But if you don't read the value with ReadDistance() before
+    #you get: None
+    print(A.Distance())
+    #You can directly access the value with:
+    print(A.distance)
+    sleep(3000)
+        
+
+    #After the readDistance() the distance is calculated
+    A.ReadDistance()
+    print(A.Distance())
     
     sleep(3000)
-    print("inizio")
-    while True:
-        a = HCSR04(D1,D2.ICU) # Create object
-        a.distance            #Initialized with a None value
-        
-        a.readDistance()     #Value is now stored
-        a.distance()         # Return the the value
-        a.distance           # You can directly access teh value
-
-        print( a.distance() )
-        print( a.distance )
-        
-        
-        print("Calculating distance again, wait...")
-        
-        #This equals to a.readDistance() + a.distance()
-        #If you do this the old a object is overwritten with the new object a with a new distance value
-        a.getDistance()      
-        
-        print( a.getDistance() )
-        
-
-        
-except Exception as e1:
-    print(e1)
+    
+    #You can do ReadDistance() + Distance() with GetDistance() in oneshot
+    print(A.GetDistance())
+    
+except Exception as DistanceError:
+    print(DistanceError)
